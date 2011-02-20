@@ -71,15 +71,15 @@ public final class WorldGuardPlugin extends JavaPlugin {
     private static Pattern groupPattern = Pattern.compile("^[gG]:(.+)$");
     private static int CMD_LIST_SIZE = 9;
     
-    private final WorldGuardPlayerListener playerListener =
+    private WorldGuardPlayerListener playerListener =
         new WorldGuardPlayerListener(this);
-    private final WorldGuardBlockListener blockListener =
+    private WorldGuardBlockListener blockListener =
         new WorldGuardBlockListener(this);
-    private final WorldGuardEntityListener entityListener =
+    private WorldGuardEntityListener entityListener =
         new WorldGuardEntityListener(this);
-    private final PermissionsResolverServerListener permsListener;
+    private PermissionsResolverServerListener permsListener;
     
-    private final PermissionsResolverManager perms;
+    private PermissionsResolverManager perms;
     
     Blacklist blacklist;
 
@@ -135,19 +135,11 @@ public final class WorldGuardPlugin extends JavaPlugin {
 
     boolean useRegions;
     int regionWand = 287; 
-    
+
     /**
-     * Construct the plugin.
-     * 
-     * @param pluginLoader
-     * @param instance
-     * @param desc
-     * @param folder
-     * @param plugin
-     * @param cLoader
+     * Called on plugin enable.
      */
-    public WorldGuardPlugin() {
-        super();
+    public void onEnable() {
 
         logger.info("WorldGuard " + getDescription().getVersion() + " loaded.");
         
@@ -172,12 +164,6 @@ public final class WorldGuardPlugin extends JavaPlugin {
                 Logger.getLogger("Minecraft").setFilter(null);
             }
         }
-    }
-
-    /**
-     * Called on plugin enable.
-     */
-    public void onEnable() {
     }
 
     /**
