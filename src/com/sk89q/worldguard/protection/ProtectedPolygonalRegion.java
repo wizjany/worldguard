@@ -65,6 +65,15 @@ public class ProtectedPolygonalRegion extends ProtectedRegion {
     public BlockVector getMaximumPoint() {
         return max;
     }
+    
+    /**
+     * Returns a modifiable list of points.
+     * 
+     * @return
+     */
+    public List<BlockVector2D> getPoints() {
+        return points;
+    }
 
     /**
      * Checks to see if a point is inside this region.
